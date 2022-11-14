@@ -6,17 +6,17 @@
 </head>
 <body>
 
-<h2 id="btc_usdt"></h2>
-<h2 id="trx_usdt"></h2>
-<h2 id="trx_dot"></h2>
+<h1 id="btc_busd"></h1>
+<h1 id="trx_busd"></h1>
+<h1 id="trx_dot"></h1>
 <script>
     setInterval(function(){$.ajax({
         url: '/update',
         type: 'POST',
         success: function(response) {
             console.log(response);
-            $("#btc_usdt").html(response["btc_usdt"]);
-            $("#trx_usdt").html(response["trx_usdt"]);
+            $("#btc_busd").html(response["btc_busd"]);
+            $("#trx_busd").html(response["trx_busd"]);
             $("#trx_dot").html(response["trx_dot"]);
         },
         error: function(error) {

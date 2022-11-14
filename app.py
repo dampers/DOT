@@ -29,8 +29,8 @@ def get_tdr():
 
 def get_prices():
     global binance, btc, trx
-    btc = binance.fetch_ticker('BTC/USDT')['close']
-    trx = binance.fetch_ticker('TRX/USDT')['close']
+    btc = binance.fetch_ticker('BTC/BUSD')['close']
+    trx = binance.fetch_ticker('TRX/BUSD')['close']
     return btc, trx
 
 @app.route('/')
@@ -40,16 +40,16 @@ def index():
 @app.route('/update', methods=['POST'])
 def update():
     btc, trx = get_prices()
-    btc_price = 'BTC/USDT : {}'.format(btc)
-    trx_price = 'TRX/USDT(present) : {}'.format(trx)
+    btc_price = 'BTC/BUSD : {}'.format(btc)
+    trx_price = 'TRX/BUSD(present) : {}'.format(trx)
     trx_dot = get_tdr()
     return jsonify({
-        'btc_usdt': btc_price,
-        'trx_usdt' : trx_price,
-        'trx_dot': 'TRX/USDT(BOOM!) : {}'.format(trx_dot),
+        'btc_busd': btc_price,
+        'trx_busd' : trx_price,
+        'trx_dot': 'TRX/BUSD(BOOM!) : {}'.format(trx_dot),
     })
 
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host='0.0.0.0', port=12356)
